@@ -31,7 +31,7 @@ export default function Home() {
         </div>
         
         {/* Testo con gradiente */}
-        <h2 className="text-6xl font-serif bold">Hi, I`&apos;`m <span className="text-6xl font-serif italic bg-gradient-to-r from-blue-200 to-blue-400 bg-clip-text text-transparent"> Marco</span></h2>
+        <h2 className="text-6xl font-serif bold">Hi, I&apos;m <span className="text-6xl font-serif italic bg-gradient-to-r from-blue-200 to-blue-400 bg-clip-text text-transparent"> Marco</span></h2>
           {/* { <div className="text-lg font-serif  bg-gradient-to-r from-blue-100 to-blue-800 bg-clip-text text-transparent"> Start with something simple and small, then expand over time.
              <p>If people call it a ‘toy’ you’re definitely onto something.
               </p>
