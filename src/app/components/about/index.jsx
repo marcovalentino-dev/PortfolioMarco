@@ -85,7 +85,7 @@ const AboutDetails = () => {
           <p className='font-light text-xs sm:text-sm md:text-2xl'>
             A passionate and versatile developer with a strong background in digital arts and extensive experience in both game development and enterprise-level applications.
             My journey in programming began at the age of 14, where I self-taught Lua, Python, and C++ to build custom versions of MMORPG games like Metin2.
-            I hold a Bachelor`&apos;`s Degree in Digital Arts with a specialization in video game programming, which has allowed me to refine my skills in both programming and digital graphics.
+            I hold a Bachelor&apos;s Degree in Digital Arts with a specialization in video game programming, which has allowed me to refine my skills in both programming and digital graphics.
           </p>
           <p className='font-light text-xs sm:text-sm md:text-2xl'><br />
             Over the years, I have honed my expertise in various technologies and software tools commonly used in the gaming and IT industry, including Unity, Autodesk Maya, Photoshop, Illustrator, Salesforce, and others.

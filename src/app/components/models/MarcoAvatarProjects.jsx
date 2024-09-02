@@ -29,6 +29,29 @@ export default function MarcoAvatarProjects(props) {
     group
   );
 
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+
+      if (width < 600){
+
+        setScale([0,0,0]);
+      } else if (width < 1200) {
+        setScale([0,0,0]);
+      } else {
+        setPosition([-0.1, -1.4, -1]);
+        setScale([2.1, 2.1, 2.1]);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   // Listener per il movimento del mouse
   useEffect(() => {
     const handleMouseMove = (event) => {
@@ -59,26 +82,51 @@ export default function MarcoAvatarProjects(props) {
   });
 
   useEffect(() => {
-    if(animation === "wakeUp" && !isScaling)
-    {
-      setScale([0, 0, 0]);
-      setIsScaling(true);
-      setIsAnimating(true);
+    const handleResize = () => {
+    const width = window.innerWidth;
+      if(animation === "wakeUp" && !isScaling)
+      {
+        
+        setScale([0, 0, 0]);
+        setIsScaling(true);
+        setIsAnimating(true);
+      }
+      else if(animation === "FreehangClimb" && isScaling)
+      {
+        setPosition([-0.1, -6.2, 1.5]);
+        if (width < 600){
+
+          setScale([0,0,0]);
+        } else if (width < 1200) {
+          setScale([0,0,0]);
+        } else {
+          setScale([1.6,1.6,1.6]);
+        }
+        setIsScaling(false);
+        setIsAnimating(true);
+      }
+      else if(animation === "idle" && !isScaling)
+      {
+        setPosition([0.16, -2, 2.5]);
+        if (width < 600){
+
+          setScale([0,0,0]);
+        } else if (width < 1200) {
+          setScale([0,0,0]);
+        } else {
+          setScale([1.6,1.6,1.6]);
+        }
+        setIsScaling(true);
+        setIsAnimating(false);
+      }
     }
-    else if(animation === "FreehangClimb" && isScaling)
-    {
-      setPosition([-0.1, -6.2, 1.5]);
-      setScale([1.6, 1.6, 1.6]);
-      setIsScaling(false);
-      setIsAnimating(true);
-    }
-    else if(animation === "idle" && !isScaling)
-    {
-      setPosition([0.16, -2, 2.5]);
-      setScale([1.6, 1.6, 1.6]);
-      setIsScaling(true);
-      setIsAnimating(false);
-    }
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   })
 
   useEffect(() => {

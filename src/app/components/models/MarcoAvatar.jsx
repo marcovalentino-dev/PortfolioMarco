@@ -10,21 +10,20 @@ export default function MarcoAvatar(props) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [animation, setAnimation] = useState("waving"); // Inizia con waving
   const [isAnimating, setIsAnimating] = useState(true); // Indica se un'animazione è in corso
+  const [modelProps, setModelProps] = useState({
+    position: [-0.1, -1.4, 1.5],
+    scale: [1.6, 1.6, 1.6],
+  });
 
   const { nodes, materials } = useGLTF("/models/MarcoAvatar.glb");
 
-  // const { animations: wakeUpAnimation } = useFBX("animations/wakeUp.fbx");
   const { animations: wavingAnimation } = useFBX("animations/waving.fbx");
   const { animations: idleAnimation } = useFBX("animations/idle.fbx");
 
-  // wakeUpAnimation[0].name = "wakeUp";
   wavingAnimation[0].name = "waving";
   idleAnimation[0].name = "idle";
 
-  const { actions } = useAnimations(
-    /*wakeUpAnimation[0],*/ [wavingAnimation[0], idleAnimation[0]],
-    group
-  );
+  const { actions } = useAnimations([wavingAnimation[0], idleAnimation[0]], group);
 
   // Listener per il movimento del mouse
   useEffect(() => {
@@ -78,13 +77,38 @@ export default function MarcoAvatar(props) {
         actions[animation].stop();
       }
     };
-  }, [
-    animation,
-    actions /*wakeUpAnimation*/,
-    ,
-    wavingAnimation,
-    idleAnimation,
-  ]);
+  }, [animation, actions, wavingAnimation, idleAnimation]);
+
+  // Adjust position and scale based on screen size
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+
+      if (width < 600) {
+        setModelProps({
+          position: [-0.1, -1.6, 1.3],
+          scale: [1.2, 1.2, 1.2],
+        });
+      } else if (width < 1200) {
+        setModelProps({
+          position: [-0.1, -1.7, 1.4],
+          scale: [1.4, 1.4, 1.4],
+        });
+      } else {
+        setModelProps({
+          position: [-0.1, -1.8, 1.5],
+          scale: [1.6, 1.6, 1.6],
+        });
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <group>
@@ -92,8 +116,8 @@ export default function MarcoAvatar(props) {
         {...props}
         ref={group}
         dispose={null}
-        position={[-0.1, -1.4, 1.5]}
-        scale={[1.6, 1.6, 1.6]}
+        position={modelProps.position}
+        scale={modelProps.scale}
         rotation={[0, 0, 0]}
         rotation-x={-Math.PI / 2}
       >

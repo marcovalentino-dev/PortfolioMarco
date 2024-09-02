@@ -14,14 +14,15 @@ export default function Home() {
     <>
       {/* Video di Sfondo */}
       <video
-        autoPlay
-        muted
-        loop
-        className="fixed top-0 left-0 w-full h-full object-cover -z-10 opacity-60"
-      >
-        <source src="/background/background-video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+            autoPlay
+            muted
+            loop
+            className="w-full h-full object-cover -z-10 opacity-60"
+            preload="auto"
+          >
+            <source src="/background/background-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
 
       <div className="relative w-full h-full flex flex-col justify-center items-center">
         <div className="w-full h-3/5 xs:h-3/4 sm:h-screen flex justify-center items-center z-10">

@@ -20,12 +20,12 @@ export default function Home() {
             autoPlay
             muted
             loop
-            className="fixed top-0 left-0 fixed w-full h-full object-cover -z-10 opacity-60"
-            priority
-        >
+            className="w-full h-full object-cover -z-10 opacity-60"
+            preload="auto"
+          >
             <source src="/background/background-video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
-        </video>
+          </video>
 
       <ProjectList projects={projectsData} />
     

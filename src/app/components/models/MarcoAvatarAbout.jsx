@@ -28,6 +28,31 @@ export default function MarcoAvatarAbout(props) {
     group
   );
 
+    // Adjust position and scale based on screen size
+    useEffect(() => {
+      const handleResize = () => {
+        const width = window.innerWidth;
+  
+        if (width < 600){
+          setPosition([0, 0, 0]);
+          setScale([0,0,0]);
+        } else if (width < 1200) {
+          setPosition([-0.1, -1.2, -1]);
+          setScale([2.5, 2.5, 2.5]);
+        } else {
+          setPosition([-0.1, -1.4, -1]);
+          setScale([2.1, 2.1, 2.1]);
+        }
+      };
+  
+      handleResize();
+      window.addEventListener("resize", handleResize);
+  
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }, []);
+
   // Listener per il movimento del mouse
   useEffect(() => {
     const handleMouseMove = (event) => {
