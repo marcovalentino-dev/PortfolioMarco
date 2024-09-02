@@ -17,14 +17,15 @@ export default function Home() {
     <>
         {/* Video di Sfondo */}
         <video
-            autoPlay
-            muted
-            loop
-            className="w-full h-full object-cover -z-10 opacity-60"
-          >
-            <source src="/background/background-video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+        autoPlay
+        muted
+        loop
+        className="fixed top-0 left-0 w-full h-full object-cover -z-10 opacity-60"
+        preload="auto"
+      >
+        <source src="/background/background-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
       <ProjectList projects={projectsData} />
     
