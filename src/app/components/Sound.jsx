@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
+//
 
 const Sound = () => {
   const audioRef = useRef(null);
