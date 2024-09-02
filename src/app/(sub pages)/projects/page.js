@@ -21,7 +21,6 @@ export default function Home() {
             muted
             loop
             className="w-full h-full object-cover -z-10 opacity-60"
-            preload="auto"
           >
             <source src="/background/background-video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
